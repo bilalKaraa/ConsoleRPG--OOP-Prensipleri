@@ -12,12 +12,15 @@ namespace ConsoleRPG.Models
         public Karakter(Sinif sinif, Irk irk)
         {
             Seviye = 1;
-            MaksimumCan = 100;
-            MaksimumEnerji = 50;
+            MaksimumCan =MevcutCan= 100;
+            MaksimumEnerji =MevcutEnerji= 50;
+
             Sinifi = sinif;
             Irk = irk;
             sinif.StatBelirle(this);
             irk.StatBelirle(this);
+            Defans = 10 + Ceviklik + Seviye;
+
 
         }
         public int Seviye { get; set; }
@@ -56,7 +59,7 @@ namespace ConsoleRPG.Models
         {
             get
             {
-                if (Seviye == 1 && _maksimumEnerji != 100)
+                if (Seviye == 1 && _maksimumEnerji != 50)
                 {
                     throw new Exception("Karakterinizin enerji seviyesinde 1. seviyede olan bir karakter için bir sorun tespit edildi!!");
                 }
